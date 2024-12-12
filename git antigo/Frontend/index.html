@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="icon" href="Imagens/Logo-redondo.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <section>
+        <div class="card-api-key">
+            <div class="input-api-key">
+                <div>
+                    <h4>Informe sua API Key</h4>
+                    <form action="#" method="get" id="api-key-form">
+                        <input type="text" name="pesquisa-api-key" id="pesquisa-api-key" placeholder="Digite sua API Key">
+                        <button type="submit" id="open-modal"><i class="fa-solid fa-arrow-right-long"></i></button>
+                    </form>
+                    <p id="error-message" style="display:none;">API Key incorreta...</p>
+                </div>
+                <a href="https://authenticate.riotgames.com/?client_id=riot-developer-portal&locale=en_US&method=riot_identity&platform=web&redirect_uri=https%3A%2F%2Fauth.riotgames.com%2Fauthorize%3Fclient_id%3Driot-developer-portal%26redirect_uri%3Dhttps%253A%252F%252Fdeveloper.riotgames.com%252Foauth2-callback%26response_type%3Dcode%26scope%3Dopenid%2520email%2520summoner%26ui_locales%3Den">Link do site da Riot</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("api-key-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+        const apiKey = document.getElementById("pesquisa-api-key").value;
+
+        if (apiKey) { // Verifica se há um valor inserido
+            sessionStorage.setItem("apiKey", apiKey); // Salva a API Key no session storage
+            console.log("API Key salva com sucesso!");
+            window.location.href = "home.html"; // Redireciona para home.html
+        } else {
+            document.getElementById("error-message").style.display = "block"; // Exibe a mensagem de erro
+        }
+    });
+
+    </script>
+</body>
+</html>
